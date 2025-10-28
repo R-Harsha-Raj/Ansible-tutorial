@@ -1,0 +1,15 @@
+ansible-playbook --ask-become-pass install_apache.yml
+
+ansible all -m gather_facts --limit <hostname/ip>
+
+ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
+
+ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass --> here we need to mention all the args in "" if there are more than one args.
+
+ansible all -m apt -a name=vim-nox --become --ask-become-pass
+
+===== Above are the adhoc cmds which are run with elevated previleges using "--become" parameter.
+
+The default user that is elevated to is "root".
+
+
